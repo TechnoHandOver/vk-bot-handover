@@ -5,7 +5,7 @@ const easyvk = require('easyvk');
 
 const token = '0ad1117030ea6ab23acf42819b4251076963c066c276d6c1e7338a1fa2fd448a35e406b453e2e630ccd80';
 
-app.get('/respond', (req, res) => {
+app.get('/bot/respond', (req, res) => {
     const queryObject = url.parse(req.url,true).query;
     const executorId = queryObject['executor_id'];
     const authorId = queryObject['author_id'];
