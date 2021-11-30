@@ -1,0 +1,23 @@
+{
+  "name": "vk-bot-handover",
+  "version": "1.0.0",
+  "description": "vk-bot for handover",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TechnoHandOver/vk-bot-handover.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TechnoHandOver/vk-bot-handover/issues"
+  },
+  "homepage": "https://github.com/TechnoHandOver/vk-bot-handover#readme",
+  "dependencies": {
+    "easyvk": "^2.8.2",
+    "express": "^4.17.1"
+  }
+}
