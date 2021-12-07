@@ -6,7 +6,7 @@ const easyvk = require('easyvk');
 const token = '0ad1117030ea6ab23acf42819b4251076963c066c276d6c1e7338a1fa2fd448a35e406b453e2e630ccd80';
 
 app.get('/bot/respond', (req, res) => {
-    const queryObject = url.parse(req.url,true).query;
+    const queryObject = url.parse(req.url, true).query;
     const executorId = queryObject['executor_id'];
     const authorId = queryObject['author_id'];
 
@@ -16,10 +16,33 @@ app.get('/bot/respond', (req, res) => {
         vk.call('messages.send', {
             peer_id: authorId,
             message: `Ваш заказ взял этот пользователь: https://vk.com/id${executorId}`,
-            random_id: easyvk.randomId()
+            random_id: easyvk.randomId(),
+        }).then(() => {
+            res.send({ data: { success: true } });
+        }).catch((error) => {
+            console.log(error);
+            res.send({ data: { success: false, error } });
+        });
+    }).catch((error) => {
+        console.log(error);
+        res.send({ data: { success: false, error } });
+    });
+});
+
+app.get('/bot/schedule', (req, res) => {
+    const queryObject = url.parse(req.url, true).query;
+    const userId = queryObject['user_id'];
+
+    easyvk({
+        token,
+    }).then(async (vk) => {
+        vk.call('messages.send', {
+            peer_id: userId,
+            message: 'Привет! Появились заказы, которые тебе удобно было бы взять. Загляни в приложение!',
+            random_id: easyvk.randomId(),
         }).then(() => {
             res.send({ data: { success: true } })
-        }).catch((error) => {
+        }).catch(() => {
             console.log(error);
             res.send({ data: { success: false, error } });
         });
